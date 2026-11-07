@@ -34,6 +34,7 @@
       <a class="header-link" href="https://github.com/Helixleet/HXLT-builds">GitHub <span aria-hidden="true">↗</span></a>
     </header>
     <div id="deep-banner" class="deep-banner" hidden role="status"><p>Ссылка на музыку VK. Если HXLT Player установлен, откройте её в приложении. Если нет — скачайте его ниже.</p><a id="open-in-app" href="#">Открыть в HXLT Player ↗</a></div>
+    <div id="unavailable-banner" class="deep-banner" hidden role="status"><p>Для этого трека ссылка на открытие недоступна. Вы можете скачать HXLT Player ниже.</p></div>
     <main class="hero">
       <section class="hero-copy" aria-labelledby="hero-title">
         <div class="eyebrow">Ваш плеер для музыки VK</div>
@@ -84,6 +85,8 @@
   const artist = params.get('artist');
   const album = params.get('album');
   const track = params.get('track');
+  if (params.size === 1 && params.get('unavailable') === '1')
+    document.getElementById('unavailable-banner').hidden = false;
   let appLink = null;
   if (params.size === 1 && artist && /^[A-Za-z0-9_-]{1,128}$/.test(artist)) appLink = 'hxlt://artist/' + artist;
   else if (params.size === 1 && album && /^-[1-9][0-9]{0,18}_[1-9][0-9]{0,18}$/.test(album)) {
