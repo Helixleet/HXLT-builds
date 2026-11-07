@@ -83,11 +83,20 @@
   const params = new URLSearchParams(location.search);
   const artist = params.get('artist');
   const album = params.get('album');
+  const track = params.get('track');
   let appLink = null;
   if (params.size === 1 && artist && /^[A-Za-z0-9_-]{1,128}$/.test(artist)) appLink = 'hxlt://artist/' + artist;
   else if (params.size === 1 && album && /^-[1-9][0-9]{0,18}_[1-9][0-9]{0,18}$/.test(album)) {
     const [owner, id] = album.split('_');
     try { if (BigInt(owner) >= -9223372036854775808n && BigInt(id) <= 9223372036854775807n) appLink = 'hxlt://album/' + owner + '/' + id; } catch (_) {}
+  }
+  else if (params.size === 1 && track && /^(?:-[1-9][0-9]{0,18}|[1-9][0-9]{0,18})_[1-9][0-9]{0,18}$/.test(track)) {
+    const [owner, id] = track.split('_');
+    try {
+      const ownerId = BigInt(owner), trackId = BigInt(id);
+      if (ownerId >= -9223372036854775808n && ownerId <= 9223372036854775807n && trackId <= 9223372036854775807n)
+        appLink = 'hxlt://track/' + owner + '/' + id;
+    } catch (_) {}
   }
   if (appLink) {
     document.getElementById('deep-banner').hidden = false;
