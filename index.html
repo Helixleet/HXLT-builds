@@ -13,14 +13,25 @@
     .page{position:relative;min-height:100svh;overflow:hidden;background:radial-gradient(ellipse 640px 460px at 79% 35%,#18254b 0%,transparent 72%),radial-gradient(ellipse 620px 410px at 5% 8%,#10243b 0%,transparent 74%),var(--bg)}
     .wrap{width:min(1160px,calc(100% - 80px));margin:auto} .header{height:96px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff16}
     .brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none}.brand img{width:39px;height:39px}.wordmark{line-height:1;font-weight:800;font-size:17px;letter-spacing:1.3px}.wordmark i{font-style:normal;background:linear-gradient(135deg,#a341ff,#5740fa,#22d1ed);color:transparent;background-clip:text}.submark{color:#68d8ef;font-size:8px;font-weight:700;letter-spacing:2.3px;text-align:center;margin-top:6px}.header-link{font-size:14px;color:#c7d1e2;text-decoration:none;display:flex;align-items:center;gap:8px}.header-link:hover{color:white}
-    .hero{display:grid;grid-template-columns: 0.85fr 1.15fr;gap:58px;align-items:center;min-height:620px;padding:76px 0 84px}.eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;text-transform:uppercase;letter-spacing:2.2px;font-weight:700;color:#94bed4}.eyebrow:before{content:"";height:2px;width:25px;background:linear-gradient(90deg,#5dd7f2,#9279ff)}
-    h1{font-size:clamp(43px,5vw,68px);line-height:1.07;letter-spacing:-2.8px;margin:25px 0 22px;font-weight:750}.accent{color:#8ab8ff}.lead{color:var(--muted);font-size:17px;line-height:1.7;max-width:435px;margin:0 0 31px}.primary{border:0;border-radius:10px;min-height:56px;padding:0 23px;display:inline-flex;align-items:center;justify-content:center;gap:13px;background:linear-gradient(110deg,#6850dd,#3986c5);color:white;font-weight:650;cursor:pointer;box-shadow:0 9px 35px #4b59d53d;transition:transform .16s,filter .16s}.primary:hover{filter:brightness(1.13);transform:translateY(-2px)}.hint{color:#92a3bc;font-size:13px;margin:15px 0 0}.dot{color:#6383a1;padding:0 7px}
-    .showcase{position:relative;padding:0 0 38px 0;min-width:0}.window{border:1px solid #ffffff28;background:#172233;border-radius:12px;overflow:hidden;box-shadow:0 24px 75px #0007}.window img{display:block;width:100%;height:auto}.phone{position:absolute;width:22%;right:-12px;bottom:-2px;border-radius:15px;padding:4px;background:#182339;border:1px solid #8295ba65;box-shadow:0 12px 36px #0009}.phone img{width:100%;border-radius:11px;display:block}.visual-caption{position:absolute;bottom:0;left:0;max-width:70%;color:#8392aa;font-size:11px;line-height:1.35}.footer{border-top:1px solid #ffffff16;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:16px;color:#92a3bc;font-size:13px}.footer a{color:#b8c7dc;text-decoration:none}.footer a:hover{text-decoration:underline}
+    .hero{display:grid;grid-template-columns: 0.85fr 1.15fr;gap:58px;align-items:center;min-height:620px;padding:76px 0 84px}
+    h1{font-size:clamp(43px,5vw,68px);line-height:1.07;letter-spacing:-2.8px;margin:0 0 22px;font-weight:750}.accent{color:#8ab8ff}.lead{color:var(--muted);font-size:17px;line-height:1.7;max-width:435px;margin:0 0 31px}.primary{border:0;border-radius:10px;min-height:56px;padding:0 23px;display:inline-flex;align-items:center;justify-content:center;gap:13px;background:linear-gradient(110deg,#6850dd,#3986c5);color:white;font-weight:650;cursor:pointer;box-shadow:0 9px 35px #4b59d53d;transition:transform .16s,filter .16s}.primary:hover{filter:brightness(1.13);transform:translateY(-2px)}.hint{color:#92a3bc;font-size:13px;margin:15px 0 0}.dot{color:#6383a1;padding:0 7px}
+    .showcase{position:relative;padding:0 0 38px 0;min-width:0}.window{border:1px solid #ffffff28;background:#172233;border-radius:12px;overflow:hidden;box-shadow:0 24px 75px #0007}.window img{display:block;width:100%;height:auto}.phones{position:absolute;right:-12px;bottom:-2px;width:45%;display:flex;align-items:flex-end;gap:10px}.phone{position:relative;flex:1;min-width:0;border-radius:15px;padding:4px;background:#182339;border:1px solid #8295ba65;box-shadow:0 12px 36px #0009}.phone-modern{background:#100f1c;border-color:#8c6cff8c;transform:translateY(-16px)}.phone-tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);padding:2px 9px;border-radius:99px;font-size:10px;font-weight:700;letter-spacing:.3px;white-space:nowrap;color:#dfe8f8;background:#182339;border:1px solid #8295ba65}.phone-modern .phone-tag{background:#1d1934;border-color:#8c6cff8c}.phone img{width:100%;border-radius:11px;display:block}.visual-caption{position:absolute;bottom:0;left:0;max-width:52%;color:#8392aa;font-size:11px;line-height:1.35}.footer{border-top:1px solid #ffffff16;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:16px;color:#92a3bc;font-size:13px}.footer a{color:#b8c7dc;text-decoration:none}.footer a:hover{text-decoration:underline}
     dialog{padding:0;width:min(510px,calc(100% - 32px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid #42516c;border-radius:18px;background:#141e30;color:var(--text);box-shadow:0 32px 90px #000b}dialog::backdrop{background:#050912c9;backdrop-filter:blur(5px)}.modal{padding:28px}.modal-header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}.modal-header h2{font-size:23px;line-height:1.2;letter-spacing:-.4px;margin:1px 0 5px}.modal-header p{color:#aebdd0;margin:0;font-size:14px}.close{width:42px;height:42px;flex:none;border:1px solid #ffffff1c;border-radius:9px;background:#ffffff08;color:white;font-size:25px;cursor:pointer;line-height:1}.close:hover{background:#ffffff16}.options{display:grid;gap:10px;margin-top:25px}.option{display:flex;align-items:center;text-align:left;gap:14px;width:100%;min-height:72px;padding:14px;background:#1b2940;border:1px solid #35445b;border-radius:10px;color:white;text-decoration:none;cursor:pointer}.option:hover{border-color:#719ef7;background:#23334d}.symbol{display:grid;place-items:center;width:42px;height:42px;background:#2a3851;border-radius:9px;color:#94bcff;flex:none}.symbol svg,.arrow svg,.primary svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.option-copy{flex:1}.option-copy strong{font-size:15px;display:block;font-weight:650}.option-copy small{font-size:13px;color:#acbad0;display:block;margin-top:2px}.arrow{color:#b8c7dc;display:flex}.qr-view{text-align:center}.back{display:inline-flex;gap:7px;align-items:center;background:none;border:0;color:#bccae0;padding:4px 0 12px;min-height:44px;cursor:pointer}.back:hover{color:white}.qrbox{display:inline-block;background:white;border-radius:12px;padding:9px;margin:18px 0 8px}.qrbox img{display:block;width:200px;height:200px;image-rendering:pixelated}.qr-view h3{font-size:19px;margin:4px 0 5px}.qr-view p{font-size:14px;color:#b1bed2;max-width:330px;margin:0 auto}.apk-link{display:inline-flex;margin-top:18px;color:#9cc8ff;font-size:14px;text-underline-offset:4px;min-height:44px;align-items:center}.modal-note{font-size:12px;color:#91a0b8;text-align:center;margin:18px 0 0}
     .deep-banner{display:flex;align-items:center;gap:16px;margin-top:24px;padding:16px 18px;background:#18283e;border:1px solid #425775;border-radius:12px;color:#d9e8ff}.deep-banner p{margin:0;flex:1;font-size:14px}.deep-banner a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border-radius:8px;padding:0 16px;background:#476bd0;text-decoration:none;font-weight:650;white-space:nowrap}.deep-banner a:hover{background:#5e80e3}@media(max-width:600px){.deep-banner{align-items:flex-start;flex-direction:column}.deep-banner a{width:100%}}
     @media(max-width:850px){.wrap{width:min(680px,calc(100% - 40px))}.header{height:78px}.hero{grid-template-columns:1fr;gap:54px;padding:64px 0 58px;min-height:0}.hero-copy{max-width:550px}h1{letter-spacing:-2px}.showcase{margin-right:8px}.footer{padding:20px 0;min-height:0}}
-    @media(max-width:430px){.header-link{font-size:13px}.brand img{width:34px;height:34px}.wordmark{font-size:15px}.hero{padding-top:55px;gap:45px}h1{font-size:43px}.lead{font-size:16px}.primary{width:100%}.phone{width:25%;right:-8px}.footer{align-items:flex-start;flex-direction:column;gap:6px}.modal{padding:22px}.qrbox img{width:180px;height:180px}}
+    @media(max-width:430px){.header-link{font-size:13px}.brand img{width:34px;height:34px}.wordmark{font-size:15px}.hero{padding-top:55px;gap:45px}h1{font-size:43px}.lead{font-size:16px}.primary{width:100%}.phones{width:54%;right:-8px;gap:7px}.phone-tag{font-size:9px;padding:1px 7px}.visual-caption{max-width:44%}.footer{align-items:flex-start;flex-direction:column;gap:6px}.modal{padding:22px}.qrbox img{width:180px;height:180px}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+    .qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+    .qr-card{display:flex;flex-direction:column;align-items:center;background:#1b2940;border:1px solid #35445b;border-radius:12px;padding:14px 10px 4px}
+    .qr-card h4{font-size:15px;font-weight:650;margin:0}
+    .qr-card .qrbox{position:relative;overflow:hidden;border:0;cursor:pointer;margin:12px 0 0;font:inherit}
+    .qr-card .qrbox img{width:164px;height:164px;transition:filter .25s ease}
+    .qr-card .qrbox.is-blurred img{filter:blur(9px)}
+    .qr-cover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:650;color:#0b111e;background:#ffffff59}
+    .qrbox:not(.is-blurred) .qr-cover{display:none}
+    .qr-card .qrbox:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+    .qr-card .apk-link{margin-top:8px}
+    @media(max-width:500px){.qr-grid{grid-template-columns:1fr}.qr-card .qrbox img{width:180px;height:180px}}
   </style>
 </head>
 <body>
@@ -37,22 +48,24 @@
     <div id="unavailable-banner" class="deep-banner" hidden role="status"><p>Для этого трека ссылка на открытие недоступна. Вы можете скачать HXLT Player ниже.</p></div>
     <main class="hero">
       <section class="hero-copy" aria-labelledby="hero-title">
-        <div class="eyebrow">Ваш плеер для музыки VK</div>
         <h1 id="hero-title">Музыка в&nbsp;своём <span class="accent">ритме.</span></h1>
         <p class="lead">Слушайте любимые треки на Windows и Android. Управляйте плеером на ПК прямо с телефона.</p>
         <button class="primary" id="open-download" type="button">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 19h16"/></svg>
           Скачать HXLT Player
         </button>
-        <p class="hint">Windows x64 <span class="dot">·</span> Android <span class="dot">·</span> Последний релиз</p>
+        <p class="hint">Windows x64 <span class="dot">·</span> Android <span class="dot">
       </section>
       <div class="showcase">
         <div class="window"><img src="assets/windows.png" alt="Интерфейс HXLT Player на Windows"></div>
-        <div class="phone"><img src="assets/android.png" alt="Макет HXLT Player на Android"></div>
-        <span class="visual-caption">Windows — обработанный скриншот · Android — макет</span>
+        <div class="phones">
+          <div class="phone"><span class="phone-tag">Legacy</span><img src="assets/android.png" alt="Макет HXLT Player на Android"></div>
+          <div class="phone phone-modern"><span class="phone-tag">Modern</span><img src="assets/android-modern.png" alt="Макет HXLT Player Modern на Android"></div>
+        </div>
+        <span class="visual-caption">Windows — скриншот · Legacy и Modern — макеты</span>
       </div>
     </main>
-    <footer class="footer"><span>HELIXLEET <span class="dot">/</span> HXLT Player</span><a href="https://github.com/Helixleet/HXLT-builds/releases/latest">Посмотреть последний релиз ↗</a></footer>
+    <footer class="footer"></span> HXLT Player</span><a href="https://github.com/Helixleet/HXLT-builds/releases/latest">Посмотреть последний релиз ↗</a></footer>
   </div>
 </div>
 <dialog id="downloads" aria-labelledby="dialog-title">
@@ -69,12 +82,16 @@
       </a>
       <button class="option" id="show-qr" type="button">
         <span class="symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M10 17h4"/></svg></span>
-        <span class="option-copy"><strong>Android</strong><small>APK · QR-код для телефона</small></span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></span>
+        <span class="option-copy"><strong>Android</strong><small>Обычная и Modern · APK · QR-коды</small></span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></span>
       </button>
     </div>
     <div id="qr-view" hidden>
       <button id="back-options" class="back" type="button">← Назад к выбору</button>
-      <div class="qr-view"><h3>HXLT Player для Android</h3><p>Наведите камеру телефона, чтобы скачать последний APK.</p><div class="qrbox"><img src="assets/apk-qr.png" alt="QR-код для скачивания последней версии HXLT Player для Android"></div><br><a class="apk-link" href="https://github.com/Helixleet/HXLT-builds/releases/latest/download/HXLT_Player.apk">Скачать APK напрямую ↓</a></div>
+      <div class="qr-view"><h3>HXLT Player для Android</h3><p>Нажмите на QR-код, чтобы он стал чётким, и наведите камеру телефона.</p>
+        <div class="qr-grid">
+          <div class="qr-card"><h4>Обычная</h4><button class="qrbox is-blurred" type="button" aria-pressed="false" aria-label="Показать QR-код обычной версии"><img src="assets/apk-qr.png" alt="QR-код для скачивания HXLT Player для Android"><span class="qr-cover" aria-hidden="true">Показать</span></button><a class="apk-link" href="https://github.com/Helixleet/HXLT-builds/releases/latest/download/HXLT_Player.apk">Скачать APK напрямую ↓</a></div>
+          <div class="qr-card"><h4>Modern</h4><button class="qrbox is-blurred" type="button" aria-pressed="false" aria-label="Показать QR-код версии Modern"><img src="assets/apk-modern-qr.png" alt="QR-код для скачивания HXLT Player Modern для Android"><span class="qr-cover" aria-hidden="true">Показать</span></button><a class="apk-link" href="https://github.com/Helixleet/HXLT-builds/releases/latest/download/HXLT_Player_modern.apk">Скачать Modern APK ↓</a></div>
+        </div></div>
     </div>
     <p class="modal-note">Файлы загружаются напрямую из GitHub Releases.</p>
   </div>
@@ -111,7 +128,13 @@
   const options = document.getElementById('options');
   const qr = document.getElementById('qr-view');
   const opener = document.getElementById('open-download');
-  function showOptions() { options.hidden = false; qr.hidden = true; }
+  const qrBoxes = qr.querySelectorAll('.qrbox');
+  function blurQr() { qrBoxes.forEach(box => { box.classList.add('is-blurred'); box.setAttribute('aria-pressed', 'false'); }); }
+  qrBoxes.forEach(box => box.addEventListener('click', () => {
+    const blurred = box.classList.toggle('is-blurred');
+    box.setAttribute('aria-pressed', String(!blurred));
+  }));
+  function showOptions() { options.hidden = false; qr.hidden = true; blurQr(); }
   opener.addEventListener('click', () => { showOptions(); dialog.showModal(); });
   document.querySelector('.close').addEventListener('click', () => dialog.close());
   document.getElementById('show-qr').addEventListener('click', () => { options.hidden = true; qr.hidden = false; document.getElementById('back-options').focus(); });

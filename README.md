@@ -5,6 +5,7 @@
 - Удобная авторизация и сопряжение с приложением на ПК.
 - Управление плеером на ПК с телефона.
 - Незначительное потребление RAM. 
+- Android в двух вариантах: обычный и Modern с новым интерфейсом. Ставятся рядом и не мешают друг другу.
 
 ## Интерфейс
 
@@ -12,8 +13,19 @@
 
 ![HXLT Player для Windows](docs/images/windows.png)
 
-**Android**
+<table>
+  <tr>
+    <th>Android</th>
+    <th>Android Modern</th>
+  </tr>
+  <tr>
+    <td><img src="docs/images/android.png" alt="HXLT Player для Android" width="300"></td>
+    <td><img src="docs/images/android-modern.png" alt="HXLT Player Modern для Android" width="300"></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/Helixleet/HXLT-builds/releases/latest/download/HXLT_Player.apk">HXLT_Player.apk</a></td>
+    <td align="center"><a href="https://github.com/Helixleet/HXLT-builds/releases/latest/download/HXLT_Player_modern.apk">HXLT_Player_modern.apk</a></td>
+  </tr>
+</table>
 
-<img src="docs/images/android.png" alt="HXLT Player для Android" width="320">
-
-<sub>Windows — обработанный скриншот; Android — визуальный макет.</sub>
+<sub>Windows — обработанный скриншот; Android и Android Modern — визуальные макеты.</sub>
