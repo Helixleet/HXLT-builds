@@ -310,7 +310,7 @@ const setV = (el, v) => { if (el) { el.style.setProperty('--v', clamp(v).toFixed
 function makeToast(stage) {
   const el = document.createElement('div'); el.className = 'hx-toast'; el.setAttribute('role', 'status'); stage.appendChild(el);
   let t = 0;
-  return msg => { el.textContent = msg; el.classList.add('show'); clearTimeout(t); t = setTimeout(() => el.classList.remove('show'), 2200); };
+  return msg => { if (!el.isConnected) stage.appendChild(el); el.textContent = msg; el.classList.add('show'); clearTimeout(t); t = setTimeout(() => el.classList.remove('show'), 2200); };
 }
 
 function makeMenu(stage, api) {
@@ -323,6 +323,7 @@ function makeMenu(stage, api) {
     close,
     get open() { return !el.hidden; },
     show(ev, items) {
+      if (!el.isConnected) stage.appendChild(el);
       acts = items.map(x => x.f);
       el.innerHTML = items.map((x, i) => `<button role="menuitem" data-mi="${i}">${ic(x.i)}<span>${esc(x.t)}</span></button>`).join('');
       el.hidden = false;
@@ -444,7 +445,7 @@ function openDemo(kind, src) {
   function placeBadges() {
     if (!badgesOn) { badges.innerHTML = ''; return; }
     const wr = wrap.getBoundingClientRect();
-    const out = [];
+    const seen = new Set();
     def.features.forEach((f, i) => {
       const el = spotEls(i).find(e => { const r = e.getBoundingClientRect(); return r.width > 2 && r.height > 2 && r.bottom > wr.top + 2 && r.top < wr.bottom - 2 && r.right > wr.left && r.left < wr.right && getComputedStyle(e).visibility !== 'hidden' && !e.closest('[hidden],.is-off'); });
       if (!el) return;
@@ -452,9 +453,15 @@ function openDemo(kind, src) {
       if (!visibleOnTop(el, r)) return;
       const x = clamp(r.left - wr.left + (f.bx != null ? f.bx * r.width : r.width) - 2, 12, wr.width - 12);
       const y = clamp(r.top - wr.top + (f.by != null ? f.by * r.height : 2), 12, wr.height - 12);
-      out.push(`<span class="hx-badge${pinned === i ? ' on' : ''}" data-b="${i}" style="left:${x.toFixed(1)}px;top:${y.toFixed(1)}px">${i + 1}</span>`);
+      let b = badges.querySelector(`[data-b="${i}"]`);
+      if (!b) { b = document.createElement('span'); b.className = 'hx-badge'; b.dataset.b = i; b.textContent = i + 1; badges.appendChild(b); }
+      const L = x.toFixed(1) + 'px', T = y.toFixed(1) + 'px';
+      if (b.style.left !== L) b.style.left = L;
+      if (b.style.top !== T) b.style.top = T;
+      b.classList.toggle('on', pinned === i);
+      seen.add(String(i));
     });
-    badges.innerHTML = out.join('');
+    [...badges.children].forEach(b => { if (!seen.has(b.dataset.b)) b.remove(); });
   }
   const badgeInt = setInterval(() => { if (!root.classList.contains('is-opening')) placeBadges(); }, 700);
 
@@ -644,9 +651,10 @@ DEMOS.pc = {
       <div class="pc-brand"><b>HELI<em>X</em>LEET</b><small>— VK PLAYER —</small></div>
       <div class="pc-drag"></div>
       <div class="pc-tools">
-        <button data-a="refresh" title="Обновить">${ic('refresh')}</button>
-        <button data-a="downloads" data-spot="downloads" title="Загрузки">${ic('download')}<span class="pc-dot" hidden></span></button>
-        <button data-a="account" title="Аккаунт">${ic('user')}</button>
+        <button data-a="downloads" class="pc-tasks" title="Загрузки" hidden>${ic('queue')}<span class="pc-lbl">Загрузки</span><span class="pc-dot" hidden></span></button>
+        <button data-a="refresh" title="Обновить страницу">${ic('refresh')}<span class="pc-lbl">Обновить</span></button>
+        <button data-a="update" title="Проверить обновления приложения">${ic('download')}<span class="pc-lbl">Обновить приложение</span></button>
+        <button data-a="account" title="Аккаунт и профили">${ic('user')}<span class="pc-lbl">Аккаунт</span></button>
       </div>
       <div class="pc-wbtn">
         <button data-a="mini" title="Свернуть в мини-плеер">${ic('min')}</button>
@@ -696,14 +704,14 @@ DEMOS.pc = {
       <div class="mb-meta"><b></b><small></small></div>
       <div class="mb-ctrl"><button data-a="prev" title="Назад">${ic('prev')}</button><button data-a="toggle" class="pp-play" title="Воспроизвести">${ic('play')}</button><button data-a="next" title="Вперёд">${ic('next')}</button></div>
       <div class="mb-bar"><i></i></div>
-      <button class="mb-exp" data-a="unmini" title="Развернуть" aria-label="Развернуть">${ic('max')}</button>
+      <button class="mb-exp" data-a="unmini" title="Закрыть мини-плеер и вернуться к окну" aria-label="Закрыть мини-плеер">${ic('x')}</button>
     </div>
     <input type="file" accept="audio/*" class="pc-file" hidden>`;
 
     const E = {
       main: $('.pc-main', stage), sideIn: $('.pc-side-in', stage), cov: $('.pp-cov', stage), t: $('.pp-t', stage), a: $('.pp-a', stage),
       nx: $('.pp-next', stage), cur: $('.pp-cur', stage), dur: $('.pp-dur', stage), sl: $('.pp-sl', stage), vsl: $('.pp-vsl', stage),
-      vpct: $('.pp-vpct', stage), volic: $('.pp-volic', stage), mb: $('.pc-minibox', stage), mbBar: $('.mb-bar', stage), dot: $('.pc-dot', stage), file: $('.pc-file', stage)
+      vpct: $('.pp-vpct', stage), volic: $('.pp-volic', stage), mb: $('.pc-minibox', stage), mbBar: $('.mb-bar', stage), dot: $('.pc-dot', stage), tasks: $('.pc-tasks', stage), file: $('.pc-file', stage)
     };
     const findT = id => pl.list.find(x => x.id === id) || TRACKS[id];
     const row = t => `<div class="pt-row${t.id === pl.track.id ? ' cur' : ''}" data-id="${t.id}" role="button" tabindex="0" aria-label="${esc(t.t + ' — ' + t.a)}"><span class="pt-cov">${cover(t.h)}<span class="pt-eq"><i></i><i></i><i></i><i></i></span></span><span class="pt-meta"><b>${esc(t.t)}</b><small>${esc(t.a)}</small></span><button class="pt-more" data-a="more" title="Действия с треком" aria-label="Действия с треком">${ic('dots')}</button><span class="pt-dur">${t.d ? mmss2(t.d) : '--:--'}</span></div>`;
@@ -856,7 +864,7 @@ DEMOS.pc = {
         const s = $('header small', E.sideIn); if (s) s.textContent = downloads.filter(d => d.p < 1).length + ' активных';
       }
     }, 220);
-    const addDl = arr => { arr.forEach(t => { if (!downloads.some(d => d.t.id === t.id)) downloads.push({ t, p: 0 }); }); E.dot.hidden = false; toast(arr.length > 1 ? `В загрузки добавлено ${arr.length} трека — значок вверху` : `«${arr[0].t}» скачивается`); };
+    const addDl = arr => { arr.forEach(t => { if (!downloads.some(d => d.t.id === t.id)) downloads.push({ t, p: 0 }); }); E.dot.hidden = false; E.tasks.hidden = false; toast(arr.length > 1 ? `В загрузки добавлено ${arr.length} трека — кнопка «Загрузки» вверху` : `«${arr[0].t}» скачивается`); };
 
     function trackMenu(ev, t, anchor) {
       let e = ev;
@@ -894,6 +902,7 @@ DEMOS.pc = {
       max: () => api.fullscreen(),
       refresh: () => { go(view, false); toast('Обновлено'); },
       account: () => toast('Аккаунт VK: Иван Иванов'),
+      update: () => { toast('Проверяем обновления…'); setTimeout(() => toast('Установлена последняя версия HXLT Player'), 1100); },
       back: () => { if (hist.length) go(hist.pop(), false); },
       playall: () => { pl.shuffle = false; pl.load(0, true); },
       dlall: () => addDl(pl.list.slice(0, 4)),
