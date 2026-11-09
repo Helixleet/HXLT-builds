@@ -33,6 +33,8 @@
     .qr-card .apk-link{margin-top:8px}
     @media(max-width:500px){.qr-grid{grid-template-columns:1fr}.qr-card .qrbox img{width:180px;height:180px}}
   </style>
+  <link rel="stylesheet" href="assets/demo/demo.css">
+  <script src="assets/demo/demo.js" defer></script>
 </head>
 <body>
 <div class="page">
@@ -54,18 +56,18 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 19h16"/></svg>
           Скачать HXLT Player
         </button>
-        <p class="hint">Windows x64 <span class="dot">·</span> Android <span class="dot">
+        <p class="hint">Windows x64 <span class="dot">·</span> Android <span class="dot">·</span> Android Modern</p>
       </section>
       <div class="showcase">
-        <div class="window"><img src="assets/windows.png" alt="Интерфейс HXLT Player на Windows"></div>
+        <div class="window" data-demo="pc" tabindex="0" role="button" aria-label="Открыть живое демо HXLT Player для Windows"><img src="assets/windows.png" alt="Интерфейс HXLT Player на Windows"><span class="launch-hint" aria-hidden="true"><span class="launch-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Запустить демо</span></div>
         <div class="phones">
-          <div class="phone"><span class="phone-tag">Legacy</span><img src="assets/android.png" alt="Макет HXLT Player на Android"></div>
-          <div class="phone phone-modern"><span class="phone-tag">Modern</span><img src="assets/android-modern.png" alt="Макет HXLT Player Modern на Android"></div>
+          <div class="phone" data-demo="legacy" tabindex="0" role="button" aria-label="Открыть живое демо HXLT Player для Android"><span class="phone-tag">Legacy</span><img src="assets/android.png" alt="Макет HXLT Player на Android"><span class="launch-hint" aria-hidden="true"><span class="launch-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Запустить демо</span></div>
+          <div class="phone phone-modern" data-demo="modern" tabindex="0" role="button" aria-label="Открыть живое демо HXLT Player Modern"><span class="phone-tag">Modern</span><img src="assets/android-modern.png" alt="Макет HXLT Player Modern на Android"><span class="launch-hint" aria-hidden="true"><span class="launch-ring"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>Запустить демо</span></div>
         </div>
-        <span class="visual-caption">Windows — скриншот · Legacy и Modern — макеты</span>
+        <span class="visual-caption">Наведите или нажмите на интерфейс — откроется живое демо</span>
       </div>
     </main>
-    <footer class="footer"></span> HXLT Player</span><a href="https://github.com/Helixleet/HXLT-builds/releases/latest">Посмотреть последний релиз ↗</a></footer>
+    <footer class="footer"><span>© Helixleet · HXLT Player</span><a href="https://github.com/Helixleet/HXLT-builds/releases/latest">Посмотреть последний релиз ↗</a></footer>
   </div>
 </div>
 <dialog id="downloads" aria-labelledby="dialog-title">
